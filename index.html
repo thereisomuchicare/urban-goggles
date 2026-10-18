@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Urban Goggles — Personal Site</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header>
+    <h1>Urban Goggles</h1>
+    <p>A tiny site you can edit and upload files from your browser.</p>
+  </header>
+
+  <main>
+    <section id="content">
+      <h2>Files stored in your browser</h2>
+      <p>Use the hidden button (top-right) to open the admin panel where you can add files locally or upload them to GitHub.</p>
+      <ul id="file-list"></ul>
+    </section>
+
+    <section id="help">
+      <h2>How to publish</h2>
+      <ol>
+        <li>Go to this repository's Settings → Pages and select the main branch (root) as the source, then Save.</li>
+        <li>After that, the site will be available at https://thereisomuchicare.github.io/urban-goggles/</li>
+        <li>If you want files to be added into the GitHub repo directly from the admin panel, paste a GitHub Personal Access Token (repo: contents permission) into the panel when prompted. The token is kept only in your browser.</li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- nearly-hidden secret button in the top-right -->
+  <div id="secret-btn" title="admin"></div>
+
+  <!-- admin panel (hidden by default) -->
+  <div id="admin-panel" aria-hidden="true">
+    <button id="close-admin">✕</button>
+    <h3>Admin panel</h3>
+    <div class="admin-section">
+      <h4>Drop files here (local)</h4>
+      <div id="dropzone">Drop files or click to choose</div>
+      <input id="file-input" type="file" multiple hidden />
+      <div id="local-status"></div>
+    </div>
+
+    <div class="admin-section">
+      <h4>Upload to GitHub (optional)</h4>
+      <p>Paste a GitHub Personal Access Token (PAT) that has repo contents permission to upload files into this repository. The token is stored only in your browser.</p>
+      <label>Token: <input id="gh-token" type="password" placeholder="ghp_... or PAT"/></label>
+      <label>Branch (optional, default: main): <input id="gh-branch" type="text" placeholder="main"/></label>
+      <button id="upload-gh">Upload selected local files to GitHub (uploads/)</button>
+      <div id="gh-status"></div>
+    </div>
+
+    <div class="admin-section">
+      <h4>Local files</h4>
+      <ul id="local-file-list"></ul>
+      <button id="clear-local">Clear local files</button>
+    </div>
+  </div>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
